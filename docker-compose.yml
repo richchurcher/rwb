@@ -1,0 +1,31 @@
+version: '3'
+services:
+  pg:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: rwb
+      POSTGRES_USER: rwb
+      POSTGRES_DB: rwb
+    ports:
+      - "5432:5432"
+  node:
+    image: node:10.7
+    command: [sh, -c, "yarn install && yarn back:migrate && yarn back:seed && yarn back:serve"]
+    volumes:
+      - ".:/node"
+      - "/node/node_modules"
+    working_dir: "/node"
+    depends_on:
+      - "pg"
+    ports:
+      - "3001:3001"
+      - "9229:9229"
+    links:
+      - "pg"
+    environment:
+      DB_PASSWORD: rwb
+      DB_USER: rwb
+      DB_NAME: rwb
+      DB_HOST: pg
+      JWT_SECRET: flargleargle
+      NODE_ENV: development
