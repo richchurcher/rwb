@@ -22,11 +22,9 @@ Everything is released under the Apache 2 license. As always, please be cautious
 
 ## Scaffolding
 
-This project was bootstrapped with [create-react-app](https://github.com/facebookincubator/create-react-app), and then immediately [ejected](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject). It's an easy way to set up simple clientside basics without giving up flexibility. I've modified a few things:
-* `src` directory renamed to `client` (see `config/paths`)
-* `public` directory moved to `server/public` (see `config/paths`)
+This project was bootstrapped with [create-react-app](https://github.com/facebookincubator/create-react-app) 2. It's an easy way to set up simple clientside basics without giving up flexibility.
 
-This is a *monorepo*, which means everything is in one. There's probably no right answer to the monorepo vs separate repos question: it depends on your team's preference. You'll probably see both in practice.
+This is a *monorepo*, which means everything is in one. There's probably no right answer to the monorepo vs separate repos question: it depends on your team's preference. You'll probably see both in practice. There are, however, two npm packages (in the root directory and client directory).
 
 ## Requirements
 
@@ -47,7 +45,7 @@ The second line creates a volume just for `node_modules`, which will supercede t
 ## Install
 
 ```bash
-yarn install
+yarn
 ```
 
 ## Launch
