@@ -3,9 +3,9 @@
  */
 import jwt from 'express-jwt'
 
-import csrf from './auth/csrf'
-import DatabaseError from './database-error'
-import { USER_ATTRIBUTES } from './users/attributes'
+import csrf from './csrf'
+import DatabaseError from '../database-error'
+import { USER_ATTRIBUTES } from '../users/attributes'
 
 const JWT_CONFIG = {
   resultProperty: 'locals.user',

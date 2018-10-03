@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { privateRoute } from '../route-helpers'
+import { privateRoute } from '../auth/route-helpers'
 
 const router = express.Router()
 

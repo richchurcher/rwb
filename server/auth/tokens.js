@@ -2,7 +2,7 @@
  * @module create-token
  */
 import jsonWebToken from 'jsonwebtoken'
-import sodium from 'sodium'
+import sodium from 'libsodium-wrappers'
 
 /**
  * Create a signed JWT.
@@ -28,8 +28,10 @@ export const createJWT = (id, csrfToken) =>
  * @returns {String}
  * @link https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#Synchronizer_.28CSRF.29_Tokens
  */
-export const createCSRFToken = () => {
+export const createCSRFToken = async () => {
   const buf = Buffer.allocUnsafe(64)
+  await sodium.ready
   sodium.api.randombytes(buf, 64)
+
   return buf.toString('hex')
 }

@@ -2,7 +2,7 @@
  * @module validators
  */
 
-import ValidationError from 'validation-error'
+import ValidationError from './validation-error'
 
 /**
  * Mandatory parameters.

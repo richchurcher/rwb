@@ -2,20 +2,22 @@
  * @module hash
  */
 
-import sodium from 'sodium'
+import sodium from 'libsodium-wrappers'
 
 /**
- * node-sodium's password hashing doesn't include a higher-level API yet, so
- * this is the lower-level API. Note that because sodium is a CommonJS module,
- * we can't just do:
+ * libsodium-wrappers provides a `ready` property whose value is a promise.
+ * We need to wait for that prior to using any sodium API functions.
  *
- *   import { api } from 'sodium'
- *
- * @type {Object}
- * @link https://github.com/paixaop/node-sodium/blob/master/lib/sodium.js#L46-L51 API definition in source.
+ * @function verify
+ * @param {String} hash
+ * @param {String} password
+ * @returns {Boolean} `true` if password correct
+ * @link https://www.npmjs.com/package/libsodium-wrappers#usage-as-a-module
  */
-export const verify = (hash, password) =>
-  sodium.api.crypto_pwhash_str_verify(
+export const verify = async (hash, password) => {
+  await sodium.ready
+  return sodium.crypto_pwhash_str_verify(
     Buffer.from(hash, 'base64'),
     Buffer.from(password, 'utf8')
   )
+}

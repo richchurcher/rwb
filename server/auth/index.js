@@ -42,8 +42,8 @@ export const login = async (req, res, next) => {
     })
   }
 
-    // Don't send the hash anywhere
-    const { hash, ...userDetails } = user
+  // Don't send the hash anywhere
+  const { hash, ...userDetails } = user
 
   try {
     if (!verify(hash, password)) {
@@ -96,7 +96,7 @@ export const sessionCheck = (req, res) => {
   const { user } = res.locals
   return res.json({
     ok: true,
-    user 
+    user
   })
 }
 
