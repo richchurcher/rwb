@@ -3,10 +3,10 @@ const { camelToSnake, snakeToCamel } = require('./util/knex-converters')
 // This hook is provided by Knex. It allows us to modify the format of the
 // result before it's used.
 // Ref: https://knexjs.org/#Installation-post-process-response
-const postProcessResponse = result => 
+const postProcessResponse = result =>
   Array.isArray(result)
     ? result.map(row => snakeToCamel(row))
-    : result
+    : snakeToCamel(result)
 
 // Another hook, this time for processing data on the way in to Knex. We can
 // leverage it to convert camelCase to snake_case.
