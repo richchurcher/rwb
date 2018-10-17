@@ -53,7 +53,7 @@ export default function csrf (req, res, next) {
 
   // Third wall: fail if values do not match
   if (headerToken !== user.csrfToken) {
-    return next(new AuthenticationError('CSRF token mismatch.'), 403)
+    return next(new AuthenticationError('CSRF token mismatch.', 403))
   }
 
   // Valid request: continue

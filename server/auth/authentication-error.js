@@ -1,6 +1,8 @@
 /**
  * Custom auth error. Accepts a message and HTTP status.
  *
+ * Note: extending a builtin like this relies on `babel-plugin-transform-builtin-extend`.
+ *
  * @extends Error
  */
 class AuthenticationError extends Error {
