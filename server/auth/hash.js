@@ -16,8 +16,5 @@ import sodium from 'libsodium-wrappers'
  */
 export const verify = async (hash, password) => {
   await sodium.ready
-  return sodium.crypto_pwhash_str_verify(
-    Buffer.from(hash, 'base64'),
-    Buffer.from(password, 'utf8')
-  )
+  return sodium.crypto_pwhash_str_verify(hash, password)
 }
